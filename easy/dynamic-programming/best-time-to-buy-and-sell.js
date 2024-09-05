@@ -19,3 +19,21 @@ var maxProfit = function(prices) {
     }
     return profit;
 }
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let l = 0;
+    let maxProfit = 0;
+    for (let r = 1; r < prices.length; r++) {
+        if (prices[r] > prices[l]) {
+            maxProfit = Math.max(maxProfit, prices[r] - prices[l]);
+        } else {
+            l = r;
+        }
+    }
+    return maxProfit;
+    
+}
