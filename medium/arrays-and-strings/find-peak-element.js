@@ -22,3 +22,28 @@ var findPeakElement = function(nums) {
     
     return nums[0] > nums[nums.length - 1] ? 0 : nums.length - 1; 
 };
+
+// O(n) time complexity
+// O(1) space
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findPeakElement = function(nums) {
+    let l = 0; 
+    let r = nums.length - 1;
+     while(l <= r) {
+         let m = l + Math.trunc((r - l) / 2);
+         if (nums[m] < nums[m - 1]) {
+             r = m - 1;
+         } else if (nums[m] < nums[m + 1]) {
+             l = m + 1;
+         } else {
+             return m;
+         }
+     }
+     return nums[0] > nums[nums.length - 1] ? 0 : nums.length - 1;
+ };
+ // O(log n) time complexity
+ // O(1) space
